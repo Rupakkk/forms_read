@@ -1,8 +1,8 @@
-
-from re import template
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import CreateView,ListView,TemplateView
 from app.models import FormModel
+from .forms import SignUpForm
 
 
 # Create your views here.
@@ -10,7 +10,10 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 
-
+class SignUpView(CreateView):
+    form_class =SignUpForm
+    success_url = 'post'
+    template_name = 'register.html'
 
 class HomeView(CreateView):
     model = FormModel

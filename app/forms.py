@@ -1,12 +1,20 @@
-from dataclasses import field
 from django import forms
-from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
 from app.models import FormModel
+from django.contrib.auth.models import User
 
-class Homeform(forms.ModelForm):
+class SignUpForm(UserCreationForm):
     class Meta:
-        model = FormModel
-        fields = '__all__'
+        model = User
+        fields = [
+           'username', 
+            'first_name', 
+            'last_name', 
+            'email', 
+            'password1', 
+            'password2', 
+    
+        ]
 
 
 
